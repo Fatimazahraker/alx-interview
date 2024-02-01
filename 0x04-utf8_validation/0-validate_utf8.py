@@ -6,14 +6,10 @@
 
 
 def validUTF8(data):
-    """ٌ Return  True if data is a valid UTF-8 encoding, else return False
-
-    Args:
-        data (_type_):  list of integers
-    """
     count = 0
     for byte in data:
         if count == 0:
+            # Check leading byte
             mask = 0x80
             while (byte & mask) != 0:
                 count += 1
@@ -23,6 +19,9 @@ def validUTF8(data):
             if count > 4 or count == 1:
                 return False
         else:
+            # Check continuation byte
             if (byte & 0xC0) != 0x80:
                 return False
+        count -= 1
+
     return count == 0
