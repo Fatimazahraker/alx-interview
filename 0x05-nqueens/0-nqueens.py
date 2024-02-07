@@ -4,7 +4,7 @@
 from sys import argv, exit
 
 
-class  Board:
+class Board:
     """ board class """
 
     def __init__(self, n):
@@ -25,11 +25,10 @@ class  Board:
                 if self.board[r][c] == "Q":
                     solutions.append([r, c])
                     break
-        return solutions                       
-        
+        return solutions
 
     def clone(self):
-        new =Board(self.N)
+        new = Board(self.N)
         for i in range(self.N):
             for j in range(self.N):
                 new.board[i][j] = self.board[i][j]
@@ -102,4 +101,4 @@ if __name__ == "__main__":
         exit(1)
     board = Board(N)
     for solution in board.back_track(0, 0, []):
-        print(solution) 
+        print(solution)
